@@ -18,6 +18,8 @@ function Navegation() {
               <LinkContainer to="/funcoes"><NavDropdown.Item>Funções</NavDropdown.Item></LinkContainer>
               <LinkContainer to="/musicas"><NavDropdown.Item>Musicas</NavDropdown.Item></LinkContainer>
               <LinkContainer to="/materiais"><NavDropdown.Item>Materiais</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/buscar"><NavDropdown.Item>Buscar</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/caixa"><NavDropdown.Item>Caixa Select</NavDropdown.Item></LinkContainer>
             </NavDropdown>
             <LinkContainer to="/contato"><Nav.Link>Contato</Nav.Link></LinkContainer>
           </Nav>
