@@ -1,6 +1,7 @@
 import { Form, Row, Col, Container, Button } from "react-bootstrap";
 import { useState } from 'react';
 import { urlBase } from "../utilitarios/definicoes";
+import CaixaSelecao from "../componentes/CaixaSelecao";
 
 
 function NovoEvento(props) {
@@ -77,7 +78,8 @@ function NovoEvento(props) {
     evento.preventDefault();
     evento.stopPropagation();
   }
-
+  const [clienteSelecionado, setClienteSElecionado] = useState({});
+  const [produtoSelecionado, setProdutoSelecionado] = useState({});
   return (
     <Container className="formulario">
       <Form noValidate validated={validado} onSubmit={manipulaSubmissao} className="mb-5">
@@ -138,25 +140,13 @@ function NovoEvento(props) {
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Selecione a Banda: </Form.Label>
-              <Form.Select aria-label="Default select example" value={eventos.banda} onChange={manipulaMudanca} id="banda">
-                <option>Selecione qual banda vai tocar</option>
-                <option value="Roger: Piano, Thiago: Vocal, Heyder: Violão">Roger: Piano, Thiago: Vocal, Heyder: Violão</option>
-                <option value="Cristiano: Bateria, Matheus: Guitarra, José: Vocal">Cristiano: Bateria, Matheus: Guitarra, José: Vocal</option>
-                <option value="Clayton: Vocal, Joaquim: Piano, Marcelo: Guitarra">Clayton: Vocal, Joaquim: Piano, Marcelo: Guitarra</option>
-              </Form.Select>
+              <CaixaSelecao enderecoFonteDados="http://localhost:3040/banda" campoChave="id" campoExibicao="nomeBanda" funcaoSelecao={setProdutoSelecionado} />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Selecione as Musicas: </Form.Label>
-              <Form.Select aria-label="Default select example" value={eventos.musica} onChange={manipulaMudanca} id="musica">
-                <option>Selecione as Musicas</option>
-                <option value="Raridade">Raridade</option>
-                <option value="Ruja o Leão">Ruja o Leão</option>
-                <option value="O cordeiro e o Leão">O cordeiro e o Leão</option>
-                <option value="Grandes Coisas">Grandes Coisas</option>
-                <option value="Deserto">Deserto</option>
-              </Form.Select>
+              <Form.Label>Selecione a Musicas: </Form.Label>
+              <CaixaSelecao enderecoFonteDados="http://localhost:3040/musica" campoChave="id" campoExibicao="nome" funcaoSelecao={setProdutoSelecionado} />
             </Form.Group>
           </Col>
         </Row>
