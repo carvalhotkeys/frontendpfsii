@@ -39,7 +39,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' exact element={<TelaHome />} />
+          <Route path='/frontendpfsii' exact element={<TelaHome />} />
           <Route path='/evento' exact element={<TelaEvento/>} />
           <Route path='/buscabuca' exact element={<TelaBusca />} />
           <Route path='/home' exact element={<TelaHome />} />
