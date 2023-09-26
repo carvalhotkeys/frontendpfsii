@@ -40,6 +40,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/frontendpfsii' exact element={<TelaHome />} />
+          <Route path='/' exact element={<TelaHome />} />
           <Route path='/evento' exact element={<TelaEvento/>} />
           <Route path='/buscabuca' exact element={<TelaBusca />} />
           <Route path='/home' exact element={<TelaHome />} />
