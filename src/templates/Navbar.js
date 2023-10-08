@@ -21,7 +21,7 @@ function Navegation() {
               <LinkContainer to="/buscabuca"><NavDropdown.Item>Buscar Evento</NavDropdown.Item></LinkContainer>
               <LinkContainer to="/evento"><NavDropdown.Item>Novo Evento</NavDropdown.Item></LinkContainer>
             </NavDropdown>
-            <LinkContainer to="/contato"><Nav.Link>Contato</Nav.Link></LinkContainer>
+            <LinkContainer to="/banda"><Nav.Link>Banda</Nav.Link></LinkContainer>
           </Nav>
           <Nav>
             <Nav.Link href="sair">Sair</Nav.Link>

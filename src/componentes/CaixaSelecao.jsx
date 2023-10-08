@@ -52,9 +52,11 @@ export default function CaixaSelecao({ enderecoFonteDados,
                                  onChange={(evento) => {
                                     const itemSelecionado = evento.currentTarget.value;
 
-                                    const pos = dados.map((item) => item[campoChave].toString()).indexOf(itemSelecionado);
-                                    setValorSelecionado(dados[pos]);
-                                    funcaoSelecao(dados[pos]);
+                                    const pos = dados.findIndex((item) => item[campoChave] && item[campoChave].toString() === itemSelecionado);
+                                    if (pos !== -1) {
+                                        setValorSelecionado(dados[pos]);
+                                        funcaoSelecao(dados[pos]);
+                                    }
                                  }}>
                         {
                             dados.map((item) => {

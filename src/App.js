@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TelaHome from './telas/TelaHome';
 import TelaConsulta from './telas/TelaConsulta';
-import TelaContato from './telas/TelaContato';
+import TelaBanda from './telas/TelaBanda';
 import BarraBusca from './componentes/BarraBusca';
 import CaixaSelecao from './componentes/CaixaSelecao';
 import TelaCadastroIntegrante from './telas/TelaCadastroIntegrante';
@@ -39,7 +39,6 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/frontendpfsii' exact element={<TelaHome />} />
           <Route path='/' exact element={<TelaHome />} />
           <Route path='/evento' exact element={<TelaEvento/>} />
           <Route path='/buscabuca' exact element={<TelaBusca />} />
@@ -48,7 +47,7 @@ function App() {
           <Route path='/funcoes' exact element={<TelaCadastroFuncao />} />
           <Route path='/musicas' exact element={<TelaCadastroMusica />} />
           <Route path='/materiais' exact element={<TelaCadastroMaterial />} />
-          <Route path='/contato' exact element={<TelaContato />} />
+          <Route path='/banda' exact element={<TelaBanda />} />
           <Route path='/consultas' exact element={<TelaConsulta />} />
           <Route path='/buscar' exact element={<BarraBusca placeHolder={'informe o nome do cliente'} dados={listaClientes} campoChave={"cpf"} campoBusca={"nome"} funcaoSelecao={setClienteSElecionado} valor={""} />} />
           <Route path='/caixa' exact element={<CaixaSelecao enderecoFonteDados="https://fakestoreapi.com/products" campoChave="id" campoExibicao="title" funcaoSelecao={setProdutoSelecionado} />} />

@@ -27,62 +27,46 @@ function NovoEvento(props) {
     window.location.reload();
   }
 
-  function manipulaSubmissao(evento) {
-    const form = evento.currentTarget;
-    if (form.checkValidity()) {
-      if (props.modoEdicao) {
-        fetch(urlBase + "/evento", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(eventos)
-        }).then((resposta) => {
-          alert('CLIENTE ATUALIZADO COM SUCESSO!!');
-          props.setModoEdicao(false);
-          props.exibirTabela(true);
-          reloadPage()
-        });
+
+  function gravarEvento() {
+    fetch(urlBase + "/evento", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        "codigo": eventos.codigo,
+        "nome": eventos.nome,
+        "data": eventos.data,
+        "hora": eventos.hora,
+        "descricao": eventos.descricao,
+        "banda": bandaSelecionada.idBanda,
+        "musica": musicaSelecionada.id,
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Evento cadastrado com sucesso!");
+        
+      } else {
+        throw new Error("Erro ao cadastrar o evento.");
+        
       }
-      else {
-        fetch(urlBase + "/evento", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(eventos)
-        }).then((resposta) => {
-          return resposta.json();
-
-        }).then((dados) => {
-          if (dados.status) {
-            props.setModoEdicao(false);
-            let novaLista = props.listaEventos;
-            novaLista.push(eventos);
-            props.setClientes(novaLista);
-            props.exibirTabela(true);
-            alert('INTEGRANTE CADASTRADO COM SUCESSO!');
-          }
-
-        }).catch((erro) => {
-          window.alert("ERRO AO EXECUTAR A REQUISICAO:  " + erro.message);
-        })
-      }
-      setValidado(false);
-
-
-    }
-    else {
-      setValidado(true);
-    }
-    evento.preventDefault();
-    evento.stopPropagation();
+    })
+    .catch(error => {
+      alert("Erro ao cadastrar o evento: " + error.message);
+      
+    });
   }
-  const [clienteSelecionado, setClienteSElecionado] = useState({});
-  const [produtoSelecionado, setProdutoSelecionado] = useState({});
+
+  const [bandaSelecionada, setBandaSelecionada] = useState({});
+  const [musicaSelecionada, setMusicaSelecionada] = useState({});
+
+  const mostrarConteudoLista = () => {
+    alert(JSON.stringify(bandaSelecionada));
+  };
+
   return (
     <Container className="formulario">
-      <Form noValidate validated={validado} onSubmit={manipulaSubmissao} className="mb-5">
+      <Form noValidate validated={validado} onSubmit={gravarEvento} className="mb-5">
         <Row>
           <Col>
             <Form.Group className="mb-3">
@@ -140,13 +124,13 @@ function NovoEvento(props) {
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Selecione a Banda: </Form.Label>
-              <CaixaSelecao enderecoFonteDados="http://localhost:3040/banda" campoChave="id" campoExibicao="nomeBanda" funcaoSelecao={setProdutoSelecionado} />
+              <CaixaSelecao enderecoFonteDados="http://localhost:3040/banda" campoChave="idBanda" campoExibicao="nomeBanda" funcaoSelecao={setBandaSelecionada} />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Selecione a Musicas: </Form.Label>
-              <CaixaSelecao enderecoFonteDados="http://localhost:3040/musica" campoChave="id" campoExibicao="nome" funcaoSelecao={setProdutoSelecionado} />
+              <CaixaSelecao enderecoFonteDados="http://localhost:3040/musica" campoChave="id" campoExibicao="nome" funcaoSelecao={setMusicaSelecionada} />
             </Form.Group>
           </Col>
         </Row>
@@ -155,6 +139,9 @@ function NovoEvento(props) {
             <Button type="button" variant="secondary" onClick={() => { props.exibirTabela(true) }} className="mx-3">Voltar</Button>
             <Button type="reset" variant="danger" className="mx-3">Cancelar</Button>
             <Button type="submit" variant="success" className="mx-3">Concluir</Button>
+            <Button onClick={mostrarConteudoLista}>
+              ?
+            </Button>
           </Col>
         </Row>
       </Form>
