@@ -89,7 +89,7 @@ function TelaBanda(props) {
                 <Row>
                     <Col>
                         <Form.Label>Selecione o Integrante:</Form.Label>
-                        <CaixaSelecao enderecoFonteDados="http://localhost:3040/integrante" campoChave="funcaoid" campoExibicao="nome" funcaoSelecao={setProdutoSelecionado} />
+                        <CaixaSelecao enderecoFonteDados="https://129.146.68.51/aluno8-pfsii/integrante" campoChave="funcaoid" campoExibicao="nome" funcaoSelecao={setProdutoSelecionado} />
                     </Col>
                     <Col>
                         <h5 className='text-center'>Informações Integrante</h5>
