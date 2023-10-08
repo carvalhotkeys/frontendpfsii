@@ -50,7 +50,7 @@ function App() {
           <Route path='/materiais' exact element={<TelaCadastroMaterial />} />
           <Route path='/banda' exact element={<TelaBanda />} />
           <Route path='/consultas' exact element={<TelaConsulta />} />
-          <Route path='/buscar' exact element={<BarraBusca placeHolder={'informe o nome do cliente'} dados={listaClientes} campoChave={"cpf"} campoBusca={"nome"} funcaoSelecao={setClienteSElecionado} valor={""} />} />
+          <Route path='/buscar' exact element={<BarraBusca placeHolder={'informe o nome do integrante'} dados={listaClientes} campoChave={"cpf"} campoBusca={"nome"} funcaoSelecao={setClienteSElecionado} valor={""} />} />
           <Route path='/caixa' exact element={<CaixaSelecao enderecoFonteDados="https://fakestoreapi.com/products" campoChave="id" campoExibicao="title" funcaoSelecao={setProdutoSelecionado} />} />
         </Routes>
       </BrowserRouter>
